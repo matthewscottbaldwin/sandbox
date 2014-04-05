@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+<link rel="stylesheet" type="text/css" href="interface.css" />
+  <title>Incremental Game!</title>
+ </head>
+ <body>
+ Non-Descript Incremental Game.<br>
+ Get to 1,000,000.<br><br>
+
+ Clicks: <span id='tracker'>0</span><br><br>
+<button onClick="cookieClick('cursor', 1)" type="button">Click Me!</button><br>
+<button onClick="buyCursor()" type='button'>Buy a Cursor!</button> Currently own: <span id="cursors">0</span> | Cost: <span id="cursorCost">10</span><br>
+<button onClick="buySuperCursor()" type='button'>Buy a Super Cursor!</button> Currently own: <span id="supercursors">0</span> | Cost: <span id="cursorCost">100</span><br>
+<button onClick="buyMegaCursor()" type='button'>Buy a Mega Cursor!</button> Currently own: <span id="megacursors">0</span> | Cost: <span id="cursorCost">1000</span><br>
+<button onClick="buyUltraCursor()" type='button'>Buy an Ultra Cursor!</button> Currently own: <span id="ultracursors">0</span> | Cost: <span id="cursorCost">10000</span><br>
+<button onClick="buyEpicCursor()" type='button'>Buy an Epic Cursor!</button> Currently own: <span id="epiccursors">0</span> | Cost: <span id="cursorCost">100000</span><br>
+
+
+
+<span id='victory'></span>
+ 
+  <script type="text/javascript" src="main.js"></script>
+ </body>
+</html>
