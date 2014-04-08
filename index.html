@@ -5,18 +5,18 @@
   <title>Incremental Game!</title>
  </head>
  <body>
- Non-Descript Incremental Game - HI!<br>
+ Non-Descript Incremental Game<br>
  Get to 1,000,000.<br><br>
 
  Clicks: <span id='tracker'>0</span><br><br>
-<button onClick="cookieClick('cursor', 1)" type="button">Click Me!</button><br>
-<button onClick="buyCursor()" type='button'>Buy a Cursor!</button> Currently own: <span id="cursors">0</span> | Cost: <span id="cursorCost">10</span><br>
-<button onClick="buySuperCursor()" type='button'>Buy a Super Cursor!</button> Currently own: <span id="supercursors">0</span> | Cost: <span id="cursorCost">100</span><br>
-<button onClick="buyMegaCursor()" type='button'>Buy a Mega Cursor!</button> Currently own: <span id="megacursors">0</span> | Cost: <span id="cursorCost">1000</span><br>
-<button onClick="buyUltraCursor()" type='button'>Buy an Ultra Cursor!</button> Currently own: <span id="ultracursors">0</span> | Cost: <span id="cursorCost">10000</span><br>
-<button onClick="buyEpicCursor()" type='button'>Buy an Epic Cursor!</button> Currently own: <span id="epiccursors">0</span> | Cost: <span id="cursorCost">100000</span><br>
-
-
+<button onClick="Click('clicker', 1)" type="button">Click Me!</button><br>
+<button onClick="buyClicker('clicker')" type='button'>Buy a clicker!</button> Currently own: <span id="clickerQty">0</span> | Cost: <span id="clickerCost">10</span><br>
+<button onClick="buyClicker('superclicker')" type='button'>Buy a Super clicker!</button> Currently own: <span id="superclickerQty">0</span> | Cost: <span id="superclickerCost">100</span><br>
+<button onClick="buyClicker('megaclicker')" type='button'>Buy a Mega clicker!</button> Currently own: <span id="megaclickerQty">0</span> | Cost: <span id="megaclickerCost">1000</span><br>
+<button onClick="buyClicker('ultraclicker')" type='button'>Buy an Ultra clicker!</button> Currently own: <span id="ultraclickerQty">0</span> | Cost: <span id="ultraclickerCost">10000</span><br>
+<button onClick="buyClicker('epicclicker')" type='button'>Buy an Epic clicker!</button> Currently own: <span id="epicclickerQty">0</span> | Cost: <span id="epicclickerCost">100000</span><br>
+<button onClick="decreaseInterval()" type='button'>Decrease the interval!</button> Cost: <span id="intervalCost">10</span><br>
+Current gain: <span id="total">0</span> / <span id="interval">1000</span> ms.<br><br>
 
 <span id='victory'></span>
  

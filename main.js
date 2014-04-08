@@ -1,58 +1,86 @@
 var clicks = 0;
+var interval = 1000;
+var intervalCost = 10;
 
-var clickers = 0;
-var clickerx = 1;
+var clickers = {
+    'clicker' : {
+        'cost': 10,
+        'qty' : 0,
+		'value' : 1
+    },
+    'superclicker' : {
+        'cost': 100,
+        'qty' : 0,
+		'value' : 10
+    },
+    'megaclicker' : {
+        'cost': 1000,
+        'qty' : 0,
+		'value' : 100
+    },
+	'ultraclicker' : {
+        'cost': 10000,
+        'qty' : 0,
+		'value' : 1000
+    },
+	'epicclicker' : {
+        'cost': 100000,
+        'qty' : 0,
+		'value' : 10000
+    },
+};
 
-var superclickers = 0;
-var superclickerx = 10;
 
-var megaclickers = 0;
-var megaclickerx = 100;
+function Click(type){
 
-var ultraclickers = 0;
-var ultraclickerx = 1000;
+	clicks++;
 
-var epicclickers = 0;
-var epicclickerx = 10000;
-
-function cookieClick(type, number){
-	var multiplier = 1;
-	if (type == 'supercursor') { multiplier = 10 }
-	if (type == 'megacursor') { multiplier = 100 }
-	if (type == 'ultracursor') { multiplier = 1000 }
-	if (type == 'epiccursor') { multiplier = 10000 }
-	console.log(type, number);
-    clicks = clicks + number;
 	document.getElementById("tracker").innerHTML = clicks;
 };
 
-function buyCursor(){
-    var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));     //works out the cost of this cursor
-    if(clicks >= cursorCost){                                   //checks that the player can afford the cursor
-        cursors = cursors + 1;                                   //increases number of cursors
-    	clicks = clicks - cursorCost;                          //removes the cookies spent
-        document.getElementById('cursors').innerHTML = cursors;  //updates the number of cursors for the user
-        document.getElementById('tracker').innerHTML = clicks;  //updates the number of cookies for the user
+function buyClicker(type){
+
+    var clickerCost = clickers[type]["cost"];                    //works out the cost of this clicker
+    if(clicks >= clickerCost){                                   //checks that the player can afford the clicker
+        clickers[type]["qty"] = clickers[type]["qty"] + 1;       //increases number of clickers
+    	clicks = clicks - clickerCost;                          //removes the cookies spent
+		clickers[type]["cost"] = Math.floor(clickers[type]["cost"] * 1.1);
     };
-    var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
-    document.getElementById('cursorCost').innerHTML = nextCost;  //updates the cursor cost for the user
+	console.log(type+"Qty");
+    document.getElementById(type+"Qty").innerHTML = clickers[type]["qty"];  //updates the number of clickers for the user
+    document.getElementById(type+"Cost").innerHTML = clickers[type]["cost"];  //updates the clicker cost for the user
+
+	document.getElementById('tracker').innerHTML = clicks;  //updates the number of cookies for the user
+
 };
+
+
+function decreaseInterval() {
+	if (clicks >= intervalCost) {
+		interval--;
+		intervalCost = Math.floor(intervalCost * 1.1);
+	}
+
+	document.getElementById('interval').innerHTML = interval;  
+	document.getElementById('intervalCost').innerHTML = intervalCost;  
+}
 
 window.setInterval(function(){
 
-	cookieClick('cursor', cursors);
-	cookieClick('supercursor', supercursors);
-	cookieClick('megacursor', megacursors);
-	cookieClick('ultracursor', ultracursors);
-	cookieClick('epiccursor', epiccursors);
+	var total = 0;
+	for (var type in clickers) {
+		clicks = clicks + (clickers[type]["value"] * clickers[type]["qty"]);
+		total = total + (clickers[type]["value"] * clickers[type]["qty"]);
+	}
 
-	if (clicks>=100)
+
+	if (clicks>=1000000000000000000)
 	{
 		document.getElementById('victory').innerHTML = "YOU WIN!!!!!"
 	}
 
-	console.log(clicks);
-}, 1000);
-
+	document.getElementById("tracker").innerHTML = clicks;
+	document.getElementById("total").innerHTML = total;
+}, interval);
 
 
