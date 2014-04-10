@@ -3,7 +3,8 @@ var interval = 1000;
 var intervalCost = 10;
 
 var clickers = {
-    'clicker' : {
+
+    'autoclicker' : {
         'cost': 10,
         'qty' : 0,
 		'value' : 1
@@ -31,7 +32,7 @@ var clickers = {
 };
 
 
-function Click(type){
+function Click(){
 
 	clicks++;
 
@@ -46,7 +47,7 @@ function buyClicker(type){
     	clicks = clicks - clickerCost;                          //removes the cookies spent
 		clickers[type]["cost"] = Math.floor(clickers[type]["cost"] * 1.1);
     };
-	console.log(type+"Qty");
+
     document.getElementById(type+"Qty").innerHTML = clickers[type]["qty"];  //updates the number of clickers for the user
     document.getElementById(type+"Cost").innerHTML = clickers[type]["cost"];  //updates the clicker cost for the user
 
@@ -60,21 +61,28 @@ function decreaseInterval() {
 		interval--;
 		intervalCost = Math.floor(intervalCost * 1.1);
 	}
-
-	document.getElementById('interval').innerHTML = interval;  
+	console.log(intervalCost);
+	document.getElementById('currentinterval').innerHTML = interval;  
 	document.getElementById('intervalCost').innerHTML = intervalCost;  
 }
 
 window.setInterval(function(){
 
+	if (clicks >= 10) { document.getElementById("autoclicker").style.visibility="visible"; }
+	if (clicks >= 100) { document.getElementById("superclicker").style.visibility="visible"; }
+	if (clicks >= 1000) { document.getElementById("megaclicker").style.visibility="visible"; }
+	if (clicks >= 10000) { document.getElementById("ultraclicker").style.visibility="visible"; }
+	if (clicks >= 100000) { document.getElementById("epicclicker").style.visibility="visible"; }
+	if (clicks >= 1000000) { document.getElementById("interval").style.visibility="visible"; }
+				
 	var total = 0;
 	for (var type in clickers) {
 		clicks = clicks + (clickers[type]["value"] * clickers[type]["qty"]);
 		total = total + (clickers[type]["value"] * clickers[type]["qty"]);
 	}
 
-
-	if (clicks>=1000000000000000000)
+	if (total > 0) { document.getElementById("gain").style.visibility="visible"; }
+	if (interval==0)
 	{
 		document.getElementById('victory').innerHTML = "YOU WIN!!!!!"
 	}
